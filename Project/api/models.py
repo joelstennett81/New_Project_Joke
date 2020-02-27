@@ -12,7 +12,7 @@ class Delivery(models.Model):
 
 class Flags(models.Model):
     flagText = models.CharField(max_length = 500)
-    isNSFW = models.CharField(max_length = 50)
+    isNSFW = models.CharField(max_length = 50) 
     isReligious = models.CharField(max_length = 50)
     isPolitical = models.CharField(max_length = 50)
     isSexist = models.CharField(max_length = 50)
