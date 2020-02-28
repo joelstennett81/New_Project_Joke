@@ -6,8 +6,5 @@ from api import views
 
 router = DefaultRouter()
 router.register('Joke',views.JokeViewSet)
-urlpatterns = [
-	path('api/',include('api.urls')),
-	path('admin/',admin.site.urls),
-	path('api_auth/',include('rest_framework.urls')),
-]
+
+urlpatterns = router.urls
