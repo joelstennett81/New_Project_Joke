@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
                 ('category', models.CharField(max_length=50)),
                 ('jokeType', models.CharField(max_length=50)),
                 ('setup', models.CharField(max_length=500)),
+                ('flags',models.CharField(max_length=500)),
                 ('delivery', models.CharField(max_length=500)),
                 ('isNSFW', models.CharField(max_length=25)),
                 ('isReligious', models.CharField(max_length=25)),
