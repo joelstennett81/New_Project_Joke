@@ -57,6 +57,7 @@ def go():
         }
         json_data = json.dumps(new_data)
         response = requests.post('http://ec2-52-204-195-1.compute-1.amazonaws.com:8000/api/',data=json_data,headers=headers)
+        prepared = req.prepare()
         s = requests.Session()
         response = s.send(prepared)
         #req = requests.Request('POST','https://sv443.net/jokeapi/v2/joke/Any?format=json',data=json_data,headers=headers)
