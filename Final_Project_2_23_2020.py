@@ -26,7 +26,7 @@ def get():
     return data
 def go():
     data = get()
-    api_key = 'somefakekey'
+    api_key = 'dd93c204f373b1ff6e2800c5b31f6a6beacbb032'
     headers = {
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': "Token " + api_key
