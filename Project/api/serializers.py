@@ -3,6 +3,6 @@ from . import models
 
 class JokeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        fields = ('category','type','setup','delivery','isNSFW','isReligious','isPolitical','isSexist','idNum')
+        fields = ('category','jokeType','setup','delivery','isNSFW','isRacist','isReligious','isPolitical','isSexist','idNum')
         model = models.Joke
 
