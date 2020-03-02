@@ -16,11 +16,12 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('category', models.CharField(max_length=50)),
-                ('type', models.CharField(max_length=50)),
+                ('jokeType', models.CharField(max_length=50)),
                 ('setup', models.CharField(max_length=500)),
                 ('delivery', models.CharField(max_length=500)),
                 ('isNSFW', models.CharField(max_length=25)),
                 ('isReligious', models.CharField(max_length=25)),
+                ('isRacist',models.CharField(max_length = 25)),
                 ('isPolitical', models.CharField(max_length=25)),
                 ('isSexist', models.CharField(max_length=25)),
                 ('idNum', models.IntegerField(default=0)),
