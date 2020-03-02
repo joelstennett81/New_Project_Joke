@@ -14,6 +14,6 @@ class JokeDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = JokeSerializer
 
 class JokeViewSet(viewsets.ModelViewSet):
-    queryset = Joke.objects.all().order_by('-created_at')
+    queryset = Joke.objects.all()
     serializer_class = JokeSerializer
 
