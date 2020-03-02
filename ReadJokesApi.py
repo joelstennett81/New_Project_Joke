@@ -1,12 +1,9 @@
 import requests
 import json
 import csv
-
 jokes_url = "https://sv443.net/jokeapi/v2/joke/Any"
 jokes_url_ending = "?format=json"
-
 DEBUG = True
-
 def get():
     try:
         response = requests.get(jokes_url)
@@ -57,15 +54,13 @@ def go():
         }
         json_data = json.dumps(new_data)
         response = requests.post('http://ec2-52-204-195-1.compute-1.amazonaws.com:8000/api/',data=json_data,headers=headers)
-        prepared = req.prepare()
-        s = requests.Session()
-        response = s.send(prepared)
+        # prepared = req.prepare()
+        # s = requests.Session()
+        # response = s.send(prepared)
         #req = requests.Request('POST','https://sv443.net/jokeapi/v2/joke/Any?format=json',data=json_data,headers=headers)
-    
         """ prepared = req.prepare()
         print('DEBUG: POST Headers = ' + str(prepared.headers)) # show our custom headers
         print('DEBUG: POST Body = '+ prepared.body) # show us the body which is JSON
-
         s = requests.Session()
         response = s.send(prepared)
         print("\n")
