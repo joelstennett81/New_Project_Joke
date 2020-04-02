@@ -17,6 +17,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('category', models.CharField(max_length=50)),
                 ('jokeType', models.CharField(max_length=50)),
+                ('joke',models.CharField(max_length=500)),
                 ('setup', models.CharField(max_length=500)),
                 ('flags',models.CharField(max_length=500)),
                 ('delivery', models.CharField(max_length=500)),
