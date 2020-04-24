@@ -2,37 +2,40 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Font from 'expo-font';
 import {AppLoading} from 'expo';
-import {createStore, combineReducers} from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-
-import HomeScreen from './screens/HomeScreen';
 import jokesReducer from './store/reducers/jokes';
+import HomeTabNavigator from './components/JokeNavigator';
+import 'react-native-gesture-handler';
+import ReduxThunk from 'redux-thunk';
 
 const rootReducer = combineReducers({
     jokes: jokesReducer,
 });
-const dataStore = createStore(rootReducer);
 
-const fetchData = () => {
+
+const dataStore = createStore(rootReducer, applyMiddleware(ReduxThunk));
+const fetchFont = () => {
     return Font.loadAsync({
         playfair: require('./assets/PlayfairDisplay-Black.ttf'),
         "playfair-bold": require('./assets/PlayfairDisplay-Bold.ttf'),
         "playfair-italic": require('./assets/PlayfairDisplay-BlackItalic.ttf')
     });
-}
-
+};
 export default function App() {
   const [fontLoaded, setFontLoaded] = useState(false);
-
-  if (!dataLoaded){
+  if (!fontLoaded){
     return (
-        <AppLoading startAsync={fetchData} onFinish={() => setDataLoaded(true)} onError ={err => console.log(err)}
+        <AppLoading
+            startAsync={fetchFont}
+            onFinish={() => setFontLoaded(true)}
+            onError ={err => console.log(err)}
         />
     );
   }
   return (
     <Provider store = {dataStore}>
-        <HomeScreen />
+        <HomeTabNavigator />
     </Provider>
   );
 }

@@ -13,7 +13,7 @@ export const JOKES = [
     },
     {
         "category": "Miscellaneous",
-        "type": "twopart",
+        "type": "single",
         "joke": "// This line doesn't actually do anything, but the code stops working when I delete it.",
         'isNSFW': false,
         'isReligious': false,
