@@ -6,5 +6,4 @@ from api import views
 
 router = DefaultRouter()
 router.register('Joke',views.JokeViewSet)
-
 urlpatterns = router.urls

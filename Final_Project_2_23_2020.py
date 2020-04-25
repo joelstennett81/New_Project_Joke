@@ -95,7 +95,7 @@ def go():
     #response = requests.post("http://localhost:8000/api/Joke/",data=json_data,headers=headers)
     
     print('posting to server')
-    req = requests.Request('POST',"http://localhost:8000/api/Joke/",data=data,headers=headers)
+    req = requests.Request('POST',"http://ec2-52-202-15-10.compute-1.amazonaws.com:8000/api/",data=data,headers=headers)
     prepared = req.prepare()
     print('DEBUG: POST Headers = ' + str(prepared.headers)) # show our custom headers
     print('DEBUG: POST Body = '+ prepared.body) # show us the body which is JSON
