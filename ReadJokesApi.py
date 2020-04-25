@@ -45,7 +45,7 @@ def get():
 
 def go():
     data = get()
-    api_key = 'somefakekey'
+    api_key = 'ffaf5c4875147be15d7fec2e754ad3b590e00571'
     headers = {
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': "Token " + api_key
@@ -86,7 +86,7 @@ def go():
         print(new_data)
         json_data = json.dumps(new_data)
         print(json_data)
-        response = requests.post('http://ec2-52-204-195-1.compute-1.amazonaws.com:8000/api/',data=json_data,headers=headers)
+        response = requests.post('http://ec2-52-202-15-10.compute-1.amazonaws.com:8000/api/',data=json_data,headers=headers)
         # prepared = req.prepare()
         # s = requests.Session()
         # response = s.send(prepared)
