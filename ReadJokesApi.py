@@ -91,7 +91,7 @@ def go():
         # s = requests.Session()
         # response = s.send(prepared)
         #req = requests.Request('POST','https://sv443.net/jokeapi/v2/joke/Any?format=json',data=json_data,headers=headers)
-        """ prepared = req.prepare()
+        prepared = response.prepare()
         print('DEBUG: POST Headers = ' + str(prepared.headers)) # show our custom headers
         print('DEBUG: POST Body = '+ prepared.body) # show us the body which is JSON
         s = requests.Session()
@@ -101,6 +101,6 @@ def go():
         print('DEBUG: SERVER RESPOSE HEADERS = ' +str(response.headers))
         print('DEBUG: SERVER RESPOSE DATA = ' +str(response.json()))
         print("----------\n\n")
-        current += 1 """
+        current += 1
 go()
 
