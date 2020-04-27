@@ -90,7 +90,7 @@ def go():
         # prepared = req.prepare()
         # s = requests.Session()
         # response = s.send(prepared)
-        req = requests.Request('POST','https://sv443.net/jokeapi/v2/joke/Any?format=json',data=json_data,headers=headers)
+        req = requests.Request('POST','http://ec2-52-202-15-10.compute-1.amazonaws.com:8000/api/Joke/',data=json_data,headers=headers)
         prepared = req.prepare()
         print('DEBUG: POST Headers = ' + str(prepared.headers)) # show our custom headers
         print('DEBUG: POST Body = '+ prepared.body) # show us the body which is JSON
