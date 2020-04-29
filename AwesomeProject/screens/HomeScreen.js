@@ -1,11 +1,24 @@
-import React from 'react';
+import React, {useEffect,useCallback} from 'react';
 import {StyleSheet, View, Text, FlatList, TouchableOpacity} from 'react-native';
-import {useSelector} from 'react-redux';
+import {useSelector,useDispatch} from 'react-redux';
 import Colors from '../constants/colors';
 import ReduxThunk from 'redux-thunk';
+import * as jokeActions from "../store/actions/jokes";
 
 const HomeScreen = props => {
     const jokes = useSelector(state =>state.jokes.allJokes);
+    const dispatch = useDispatch();
+    const loadJokes = useCallback(async () => {
+        try {
+            await dispatch(jokeActions.fetchJokes());
+        } catch (err) {
+            
+        }
+    }, [dispatch]);
+
+    useEffect(() => {
+        loadJokes();
+    },[dispatch]);
 
     const selectJokeHandler = (id) => {
         props.navigation.navigate('Details',{id: id});
