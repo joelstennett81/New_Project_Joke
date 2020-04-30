@@ -6,7 +6,7 @@ import ReduxThunk from 'redux-thunk';
 import * as jokeActions from "../store/actions/jokes";
 
 const HomeScreen = props => {
-    const jokes = useSelector(state =>state.jokes.allJokes);
+    const jokes = useSelector((state) =>state.jokes.allJokes);
     const dispatch = useDispatch();
     const loadJokes = useCallback(async () => {
         try {

@@ -51,7 +51,7 @@ def go():
         'Authorization': "Token " + api_key
     }
     current = 1
-    max = 3
+    max = 100
     for d in data:
         if current > max:
             break
@@ -97,9 +97,9 @@ def go():
         s = requests.Session()
         response = s.send(prepared)
         print("\n")
-        print('DEBUG: SERVER RESPOSE CODE = ' +str(response.status_code))
-        print('DEBUG: SERVER RESPOSE HEADERS = ' +str(response.headers))
-        print('DEBUG: SERVER RESPOSE DATA = ' +str(response.json()))
+        print('DEBUG: SERVER RESPONSE CODE = ' +str(response.status_code))
+        print('DEBUG: SERVER RESPONSE HEADERS = ' +str(response.headers))
+        print('DEBUG: SERVER RESPONSE DATA = ' +str(response.json()))
         print("----------\n\n")
         current += 1
 go()

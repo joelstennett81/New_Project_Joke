@@ -32,7 +32,7 @@ const HeaderButtonRight = props => {
             />
         </HeaderButtons>
     )
-}
+};
 const defaultStackNavOptions = {
     headerStyle: {
         backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : ''

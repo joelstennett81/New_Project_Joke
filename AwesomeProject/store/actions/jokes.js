@@ -8,7 +8,7 @@ export const fetchJokes = () => {
         {
             method: "GET",
             headers: {
-                "Authentication": "Token dab12abac8490cd588d905176620cd032b078bac ",
+                "Authorization": "Token dab12abac8490cd588d905176620cd032b078bac ",
                 "Content-Type": "application/json",
             },
         });
@@ -24,22 +24,23 @@ export const fetchJokes = () => {
         for (const key in responseData) {
             loadedJokes.push(
                 new Joke(responseData[key].category,
-                responseData[key].jokeType,
-                responseData[key].joke,
-                responseData[key].setup,
-                responseData[key].delivery,
-                responseData[key].isNSFW,
-                responseData[key].isReligious,
-                responseData[key].isRacist,
-                responseData[key].isPolitical,
-                responseData[key].isSexist,
-                responseData[key].idNum)
-            );
+                    responseData[key].jokeType,
+                    responseData[key].joke,
+                    responseData[key].setup,
+                    responseData[key].delivery,
+                    responseData[key].isNSFW,
+                    responseData[key].isReligious,
+                    responseData[key].isRacist,
+                    responseData[key].isPolitical,
+                    responseData[key].isSexist,
+                    responseData[key].idNum
+                )
+            )
         }
 
         dispatch({
             type: FETCH_JOKES,
-            allJoes: loadedJokes,
+            allJokes: loadedJokes,
         });
     };
 };

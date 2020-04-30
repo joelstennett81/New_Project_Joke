@@ -12,12 +12,12 @@ export default (state = initialState, action) => {
             return {
                 allJokes: action.allJokes
             };
-        case CREATE_FAVORITE:
-        case DELETE_FAVORITE:
+        //case CREATE_FAVORITE:
+        /*case DELETE_FAVORITE:
             return {
                 ...state,
-                // action,
-            }
+                // action.
+            }; */
     }
     return state;
 };
