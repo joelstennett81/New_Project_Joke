@@ -103,5 +103,5 @@ def go():
         print("----------\n\n")
         current += 1
 i = 0;
-while(i<100):
+while(i<60):
     go()
