@@ -4,7 +4,7 @@ import {StyleSheet, View, Text} from 'react-native';
 const FavoritesScreen = props => {
     return <View>
             <Text>Favorites Screen</Text>
-            <Text>This will be where I put the favorite jokes</Text>
+            <Text>Full of Favorite Jokes</Text>
             </View>;
 }
 

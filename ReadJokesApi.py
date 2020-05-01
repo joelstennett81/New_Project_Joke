@@ -92,15 +92,15 @@ def go():
         # response = s.send(prepared)
         req = requests.Request('POST','http://ec2-52-202-15-10.compute-1.amazonaws.com:8000/api/Joke/',data=json_data,headers=headers)
         prepared = req.prepare()
-        //print('DEBUG: POST Headers = ' + str(prepared.headers)) # show our custom headers
-        //print('DEBUG: POST Body = '+ prepared.body) # show us the body which is JSON
+        print('DEBUG: POST Headers = ' + str(prepared.headers)) # show our custom headers
+        print('DEBUG: POST Body = '+ prepared.body) # show us the body which is JSON
         s = requests.Session()
         response = s.send(prepared)
-        //print("\n")
-        //print('DEBUG: SERVER RESPONSE CODE = ' +str(response.status_code))
-        //print('DEBUG: SERVER RESPONSE HEADERS = ' +str(response.headers))
-        //print('DEBUG: SERVER RESPONSE DATA = ' +str(response.json()))
-        //print("----------\n\n")
+        print("\n")
+        print('DEBUG: SERVER RESPONSE CODE = ' +str(response.status_code))
+        print('DEBUG: SERVER RESPONSE HEADERS = ' +str(response.headers))
+        print('DEBUG: SERVER RESPONSE DATA = ' +str(response.json()))
+        print("----------\n\n")
         current += 1
 i = 0;
 while(i<100):
