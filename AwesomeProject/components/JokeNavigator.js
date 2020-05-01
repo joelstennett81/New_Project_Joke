@@ -123,7 +123,7 @@ const HomeTabNavigator = () => {
     );
 };
 
-const JokeNavigator = () => {
+/*const JokeNavigator = () => {
     return (
         <NavigationContainer>
             <Drawer.Navigator
@@ -134,7 +134,7 @@ const JokeNavigator = () => {
             </Drawer.Navigator>
         </NavigationContainer>
     );
-};
+}; */
 
 export default HomeTabNavigator;
 

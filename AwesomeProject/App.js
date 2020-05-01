@@ -13,7 +13,6 @@ const rootReducer = combineReducers({
     jokes: jokesReducer,
 });
 
-
 const dataStore = createStore(rootReducer, applyMiddleware(ReduxThunk));
 const fetchFont = () => {
     return Font.loadAsync({

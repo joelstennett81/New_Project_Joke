@@ -7,13 +7,15 @@ import * as jokeActions from "../store/actions/jokes";
 
 const HomeScreen = props => {
     const jokes = useSelector((state) =>state.jokes.allJokes);
+    //console.log(jokes);
     const dispatch = useDispatch();
     const loadJokes = useCallback(async () => {
         try {
             await dispatch(jokeActions.fetchJokes());
         } catch (err) {
-            
+            console.log(err);
         }
+
     }, [dispatch]);
 
     useEffect(() => {
@@ -25,30 +27,45 @@ const HomeScreen = props => {
     };
 
     const renderItemHandler = itemData => {
-        return itemData.item.type == 'single' ? (
+        return itemData.jokeType == 'single' ? (
                 <View style={styles.listItem}>
-                    <TouchableOpacity onPress={() => {selectJokeHandler(itemData.item.id)}} useForeground>
-                        <Text style={styles.listItemContent}>{itemData.item.joke}</Text>
+                    <TouchableOpacity onPress={() => {selectJokeHandler(itemData.id)}} useForeground>
+                        <Text style={styles.listItemContent}>{itemData.joke}</Text>
                     </TouchableOpacity>
                 </View>
             ) : (
                 <View style={styles.listItem}>
                     <TouchableOpacity onPress={() => {}} useForeground>
-                        <Text>{itemData.item.setup}</Text>
-                        <Text>{itemData.item.delivery}</Text>
+                        <Text>{itemData.setup}</Text>
+                        <Text>{itemData.delivery}</Text>
                     </TouchableOpacity>
                 </View>
             );
     }
+    const ShowJoke = props => {
+                return props.data.jokeType == 'single' ? (
+                        <View style={styles.listItem}>
+                            <TouchableOpacity onPress={() => {selectJokeHandler(props.data.id)}} useForeground>
+                                <Text style={styles.listItemContent}>{props.data.joke}</Text>
+                            </TouchableOpacity>
+                        </View>
+                    ) : (
+                        <View style={styles.listItem}>
+                            <TouchableOpacity onPress={() => {}} useForeground>
+                                <Text>{props.data.setup}</Text>
+                                <Text>{props.data.delivery}</Text>
+                            </TouchableOpacity>
+                        </View>
+                    );
+    };
+    // generate a random number
+    let randomNum = 10;
+    let data = jokes[randomNum];
     return (
         <View style={styles.screen}>
             <Text> Home Screen </Text>
-            <FlatList
-                style={styles.list}
-                keyExtractor={(item,index) => item.id.toString()}
-                data ={jokes}
-                renderItem={renderItemHandler}
-            />
+            <ShowJoke data={data} />
+
         </View>
     );
 };
