@@ -17,9 +17,8 @@ export const fetchJokes = () => {
             console.log(errorData);
         }
         const responseData = await response.json();
-        console.log(responseData);
+        //console.log('response data',responseData);
         const loadedJokes = [];
-
         for (const key in responseData) {
             loadedJokes.push(
                 new Jokes(responseData[key].category,
@@ -43,3 +42,4 @@ export const fetchJokes = () => {
         });
     };
 };
+

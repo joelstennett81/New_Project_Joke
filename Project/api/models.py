@@ -14,6 +14,6 @@ class Joke(models.Model):
 	idNum = models.IntegerField(default=0)
 	objects = models.Manager()
 	def __str__(self):
-		return(f"Category: {self.category}, Type: {self.jokeType}, Joke: {self.joke}, Setup: {self.setup}, Delivery: {self.delivery}") 
+		return(f"Category: {self.category}, jokeType: {self.jokeType}, Joke: {self.joke}, Setup: {self.setup}, Delivery: {self.delivery}")
   
 
