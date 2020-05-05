@@ -48,7 +48,7 @@ export const fetchJokes = () => {
 
 export const fetchOneJoke = (jokesArray) => {
     console.log('inside fetchOneJoke');
-    console.log('NEW Jokes Array \n',jokesArray);
+    console.log('NEW Jokes Array length \n',jokesArray.length);
     //console.log('jokesArray.length: ',jokesArray.length);
     let randomNum = Math.floor((Math.random() * jokesArray.length) + 1);
     console.log('random number generated',randomNum);
