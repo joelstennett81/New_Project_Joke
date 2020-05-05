@@ -89,11 +89,11 @@ def go():
         print(new_data)
         json_data = json.dumps(new_data)
         print(json_data)
-        #response = requests.post('http://ec2-52-202-15-10.compute-1.amazonaws.com/api/',data=json_data,headers=headers)
+        #response = requests.post('http://ec2-52-202-15-10.compute-1.amazonaws.com:8000/api/',data=json_data,headers=headers)
         # prepared = req.prepare()
         # s = requests.Session()
         # response = s.send(prepared)
-        req = requests.Request('POST','http://ec2-52-202-15-10.compute-1.amazonaws.com/api/Joke/',data=json_data,headers=headers)
+        req = requests.Request('POST','http://ec2-52-202-15-10.compute-1.amazonaws.com:8000/api/Joke/',data=json_data,headers=headers)
         prepared = req.prepare()
         print('DEBUG: POST Headers = ' + str(prepared.headers)) # show our custom headers
         print('DEBUG: POST Body = '+ prepared.body) # show us the body which is JSON

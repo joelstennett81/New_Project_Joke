@@ -6,7 +6,6 @@ import ReduxThunk from 'redux-thunk';
 import * as jokeActions from "../store/actions/jokes";
 import Constants from 'expo-constants';
 import {fetchOneJoke} from "../store/actions/jokes";
-let firstVariable = 1; // This shows the first time we are in app
 
 const HomeScreen = props => {
     console.log('Inside top of homescreen');

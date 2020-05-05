@@ -60,4 +60,4 @@ export const fetchOneJoke = (jokesArray) => {
             oneJoke: oneJoke,
         });
     };
-}
+};
