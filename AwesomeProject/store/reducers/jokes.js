@@ -1,10 +1,12 @@
-import {JOKES} from '../../data/dummy-data';
-import {FETCH_JOKES} from '../actions/jokes';
+import {JOKES,FAV_JOKES} from '../../data/dummy-data';
+import {FETCH_JOKES,ONE_JOKE} from '../actions/jokes';
+
 const initialState = {
     allJokes: JOKES,
-    favoriteJokes: [],
+    favoriteJokes: FAV_JOKES,
     twopartJokes: JOKES.filter(double => double.jokeType == "twopart"),
-    singleJokes: JOKES.filter(single => single.jokeType == 'single')
+    singleJokes: JOKES.filter(single => single.jokeType == 'single'),
+    oneJoke: JOKES,
 };
 
 export default (state = initialState, action) => {
@@ -13,5 +15,10 @@ export default (state = initialState, action) => {
             return {
                 allJokes: action.allJokes
             };
+        case ONE_JOKE:
+            return {
+                oneJoke: action.oneJoke
+            };
     }
+    return state;
 };

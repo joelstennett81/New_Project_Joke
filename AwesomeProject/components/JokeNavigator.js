@@ -15,6 +15,7 @@ import Colors from '../constants/colors';
 
 const HomeStack = createStackNavigator();
 const FavoritesStack = createStackNavigator();
+const DetailsStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const CustomHeaderButton = props => (
@@ -38,8 +39,9 @@ const defaultStackNavOptions = {
         backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : ''
     },
     headerTitleStyle: {
-        fontSize: 24,
-        fontFamily: "playfair-bold"
+        fontSize: 30,
+        fontFamily: "playfair-bold",
+        alignItems: 'center',
     },
     headerTintColor: Platform.OS === 'android' ? 'white': Colors.primaryColor,
     headerTitle: "Joel's Joke App",
@@ -69,6 +71,18 @@ const FavoritesStackNavigator = () => {
     );
 };
 
+const DetailsStackNavigator = () => {
+    return (
+       <DetailsStack.Navigator screenOptions = {({navigation,route}) => ({
+            ...defaultStackNavOptions,
+            /*headerRight: () => <HeaderButtonRight navigation={navigation} route = {route} /> */
+            })}>
+            <DetailsStack.Screen name="Details" component = {DetailsScreen} />
+            <DetailsStack.Screen name="Home" component={HomeScreen} />
+       </DetailsStack.Navigator>
+    );
+};
+
 const HomeTab = Platform.OS == 'android' ? createMaterialBottomTabNavigator(): createBottomTabNavigator();
 
 const HomeTabNavigator = () => {
@@ -81,22 +95,23 @@ const HomeTabNavigator = () => {
                     backgroundColor: Colors.primaryColor
                 }}>
                 <HomeTab.Screen
-                name='Home'
-                component={HomeStackNavigator}
-                options ={{
-                    tabBarIcon: ({color}) => {
-                        return (
-                            <Ionicons
-                                name={Platform.OS === 'android' ? 'md-home' : 'ios-home'}
-                                size={24}
-                                color={color}
-                            />
-                        );
-                    },
-                    tabBarLabel: Platform.OS === 'android' ? (
-                        <Text style= {{fontFamily: "playfair"}}>Home</Text>
-                    ) : ('Home'),
-                }}></HomeTab.Screen>
+                    name='Home'
+                    component={HomeStackNavigator}
+                    options ={{
+                        tabBarIcon: ({color}) => {
+                            return (
+                                <Ionicons
+                                    name={Platform.OS === 'android' ? 'md-home' : 'ios-home'}
+                                    size={24}
+                                    color={color}
+                                />
+                            );
+                        },
+                        tabBarLabel: Platform.OS === 'android' ? (
+                            <Text style= {{fontFamily: "playfair"}}>Home</Text>
+                        ) : ('Home'),
+                }}>
+                </HomeTab.Screen>
                 <HomeTab.Screen
                     name = 'Favorites'
                     component = {FavoritesStackNavigator}
@@ -115,6 +130,27 @@ const HomeTabNavigator = () => {
                             <Text style={{ fontFamily: "playfair" }}>Favorites</Text>
                         ) : (
                             "Favorites"
+                        ),
+                    }}>
+                </HomeTab.Screen>
+                <HomeTab.Screen
+                    name = 'About'
+                    component = {DetailsStackNavigator}
+                    options = {{
+                        tabBarIcon: ({ color }) => {
+                            return (
+                                <Ionicons
+                                    name={Platform.OS === 'android' ? 'md-question' : 'ios-question'}
+                                    size = {24}
+                                    color ={color}
+                                />
+                            );
+                    },
+                    tabBarLabel:
+                        Platform.OS === 'android' ? (
+                            <Text style={{ fontFamily: "playfair" }}>About</Text>
+                        ) : (
+                            "About"
                         ),
                     }}>
                 </HomeTab.Screen>

@@ -5,9 +5,11 @@ import Colors from '../constants/colors';
 import ReduxThunk from 'redux-thunk';
 import * as jokeActions from "../store/actions/jokes";
 import Constants from 'expo-constants';
-
+import {fetchOneJoke} from "../store/actions/jokes";
+let firstVariable = 1; // This shows the first time we are in app
 const HomeScreen = props => {
-const [isLoading, setIsLoading] = useState(false);
+
+    const [isLoading, setIsLoading] = useState(false);
     const jokes = useSelector((state) =>state.jokes.allJokes);
     let randomNum = 0;
     let data;
@@ -31,26 +33,35 @@ const [isLoading, setIsLoading] = useState(false);
     const selectJokeHandler = (id) => {
         props.navigation.navigate('Details',{id: id});
     };
-
-    const renderItemHandler = itemData => {
-        return itemData.jokeType == 'single' ? (
-                <View style={styles.listItem}>
-                    <TouchableOpacity onPress={() => {selectJokeHandler(itemData.id)}} useForeground>
-                        <Text style={styles.listItemContent}>{itemData.joke}</Text>
-                    </TouchableOpacity>
-                </View>
-            ) : (
-                <View style={styles.listItem}>
-                    <TouchableOpacity onPress={() => {}} useForeground>
-                        <Text>{itemData.setup}</Text>
-                        <Text>{itemData.delivery}</Text>
-                    </TouchableOpacity>
-                </View>
-            );
-    }
     const ShowJoke = props => {
         console.log(props);
-        return props.data.jokeType == 'single' ? (
+        if (!props.data)
+        {
+            return (<Text style={styles.title}>There is an error!</Text>);
+        }
+        else if (props.data.jokeType == 'single')
+        {
+            firstVariable = 2;
+            return (
+                <SafeAreaView style={styles.listItem}>
+                    <Text style={styles.listItemContent}>{props.data.joke}</Text>
+                </SafeAreaView>);
+        }
+        else if (props.data.jokeType == 'twopart')
+        {
+            firstVariable = 3;
+            return (
+                <SafeAreaView style={styles.listItem}>
+                    <Text>{props.data.setup}</Text>
+                    <Text>{props.data.delivery}</Text>
+                </SafeAreaView>
+            );
+        }
+        else
+        {
+            return (<Text style={styles.title}>There is an error!</Text>);
+        }
+        /*return (if props.data.jokeType == 'single': ? (
             <SafeAreaView style={styles.listItem}>
                 <TouchableOpacity onPress={() => {selectJokeHandler(props.data.id)}} useForeground>
                     <Text style={styles.listItemContent}>{props.data.joke}</Text>
@@ -64,26 +75,29 @@ const [isLoading, setIsLoading] = useState(false);
                     </TouchableOpacity>
                 </SafeAreaView>
             );
+            )*/
     };
-    const generateNewJoke = j => {
-        console.log('in generateNewJoke');
+    const generateNewJoke = () => {
+        console.log('in if generateNEWJoke');
         randomNum = Math.floor((Math.random() * jokes.length) + 1);
         console.log('random number generated',randomNum);
         data = jokes[randomNum];
         console.log('new joke generated: ', data);
     };
-    // generate a random number
+
     generateNewJoke();
     //let data = jokes[randomNum];
     return (
         <View style={styles.screen}>
-            <Text> Home Screen </Text>
+            <Text style={styles.title}>Joke of the Day </Text>
             { (isLoading) ? (
-                <Text> "Still Loading Data" </Text> ) :
+                <Text style={styles.title}> "Loading Data" </Text> ) :
             (
                 <ShowJoke data={data} />
                 ) }
-            <Button title="New Joke" OnPress={generateNewJoke} />
+                <TouchableOpacity onPress={jokeActions.fetchOneJoke(jokes)}>
+                    <Text> New Joke </Text>
+                </TouchableOpacity>
         </View>
     );
 };
@@ -111,6 +125,9 @@ const styles = StyleSheet.create({
     },
     listItemContent: {
         padding: 10,
-    }
+    },
+    title: {
+        fontSize: 30
+    },
 });
 export default HomeScreen;

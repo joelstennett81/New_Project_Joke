@@ -1,5 +1,8 @@
 export const FETCH_JOKES = 'FETCH_JOKES';
+export const ONE_JOKE = 'ONE_JOKE';
 import Jokes from '../../models/jokes';
+import {JOKES} from '../actions/jokes';
+
 
 export const fetchJokes = () => {
     return async (dispatch,getState) => {
@@ -35,7 +38,7 @@ export const fetchJokes = () => {
                 )
             )
         }
-        console.log('loaded jokes:',loadedJokes);
+        //console.log('loaded jokes:',loadedJokes);
         dispatch({
             type: FETCH_JOKES,
             allJokes: loadedJokes,
@@ -43,3 +46,18 @@ export const fetchJokes = () => {
     };
 };
 
+export const fetchOneJoke = (jokesArray) => {
+    console.log('inside fetchOneJoke');
+    console.log('NEW Jokes Array \n',jokesArray);
+    //console.log('jokesArray.length: ',jokesArray.length);
+    let randomNum = Math.floor((Math.random() * jokesArray.length) + 1);
+    console.log('random number generated',randomNum);
+    let oneJoke = jokesArray[randomNum];
+    console.log('oneJoke: \n',oneJoke);
+    return async (dispatch,getState) => {
+        dispatch({
+            type: ONE_JOKE,
+            oneJoke: oneJoke,
+        });
+    };
+}

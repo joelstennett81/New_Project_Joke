@@ -27,7 +27,7 @@ export const JOKES = [
         "error": false
     }
 ];
-/*
+
 export const FAV_JOKES = [
     {
         "category": "Dad",
@@ -94,4 +94,4 @@ export const FAV_JOKES = [
         'isSexist': false,
         "id": 5,
     },
-]*/
+]
